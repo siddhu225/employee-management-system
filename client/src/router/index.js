@@ -4,9 +4,10 @@ import Hello from "@/components/HelloWorld";
 import Posts from "@/components/Posts";
 import EmployeeAdd from "@/components/EmployeeAdd";
 import login from "@/components/login";
-import Employees from "@/components/employees"
-import EditEmployee from "@/components/EditEmployee"
-import EmployeeProfile from "@/components/employeeprofile"
+import Employees from "@/components/employees";
+import EditEmployee from "@/components/EditEmployee";
+import EmployeeProfile from "@/components/employeeprofile";
+import ForgotPassword from "@/components/forgotpassword";
 
 Vue.use(Router);
 
@@ -34,14 +35,20 @@ export default new Router({
       component: EmployeeAdd
     },
     {
-      path: '/employees/:id',
-      name: 'EditEmployee',
+      path: "/employees/:id",
+      name: "EditEmployee",
       component: EditEmployee
     },
     {
-      path: '/employees/view/:id',
-      name: 'EmployeeProfile',
-      component: EmployeeProfile
-}
+      path: "/employees/view/:userId",
+      name: "EmployeeProfile",
+      component: EmployeeProfile,
+      props: true
+    },
+    {
+      path: "/forgot/password",
+      name: "ForgotPassword",
+      component: ForgotPassword
+    }
   ]
 });

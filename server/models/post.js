@@ -37,6 +37,10 @@ var PostSchema = new Schema({
       password:{
         type:String,
         require:true
+      },
+      img:{
+         data: Buffer, 
+         contentType: String 
       }
 
 

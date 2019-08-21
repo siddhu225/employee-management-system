@@ -50,7 +50,7 @@
     <div class="section">
       <div class="field has-text-centered">
         <div class="label">
-          <div class="is-size-3 is-capitalized">registration form</div>
+          <div class="is-size-3 is-capitalized">Employee Edit form</div>
         </div>
       </div>
       <div class="section">
@@ -69,6 +69,7 @@
             </div>
           </div>
         </div>
+
         <div class="columns is-centered">
           <div class="column is-4">
             <div class="filed">
@@ -133,6 +134,30 @@
                 <span class="icon is-mall">
                   <i class="fa fa-user"></i>
                 </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-4">
+            <div class="filed">
+              <label class="label is-capitalized has-text-left">department / office</label>
+            </div>
+            <div class="field">
+              <div class="control has-icons-left">
+                <div class="select">
+                  <select class="has-text-centered" v-model="employeeData.role">
+                    <option value="1" disabled>Select a option</option>
+                    <option value="Admin">Admin</option>
+                    <option value="Software Enginner">Software Enginner</option>
+                    <option value="Qa Engineer">Qa Engineer</option>
+                    <option value="Intern">Intern</option>
+                    <option value="Plugin team">Plugin team</option>
+                  </select>
+                  <span class="icon is-mall">
+                    <i class="fa fa-list"></i>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -210,7 +235,8 @@ export default {
   name: "EditEmployee",
   data() {
     return {
-      employeeData: {}
+      employeeData: {},
+      file:'',
     };
   },
   mounted() {
@@ -223,6 +249,7 @@ export default {
       })).data;
       this.employeeData.dob = new Date(this.employeeData.dob);
     },
+    
     async updatePost() {
       await PostsService.updatePost({
         id: this.$route.params.id,
@@ -233,10 +260,11 @@ export default {
         email: this.employeeData.email,
         address: this.employeeData.address,
         experience: this.employeeData.experience,
-        password: this.employeeData.password
+        password: this.employeeData.password,
       });
       this.$router.push({ name: "Employees" });
-    }
+    },
+   
   }
 };
 </script>

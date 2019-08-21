@@ -1,15 +1,16 @@
 <template>
-  <div id="app">
-    <nav class="navbar has-shadow">
+    <div id="app">
+    <nav class="navbar has-shadow has-background-grey-light	">
+      <nav class="navbar has-shadow">
       <div class="navbar-brand">
         <!-- <a class="navbar-item image is-64x64">
           <img src="" alt="img">
         </a>-->
       </div>
-      <div class="navbar-menu">
+      <div class="navbar-menu has-background-grey-light	" >
         <div class="navbar-start">
           <p class="navbar-item">
-            <small>Employee management system</small>
+            <small class="is-size-3 is-capitalized">Employee management system</small>
           </p>
         </div>
         <hr />
@@ -29,14 +30,6 @@
               <a class="navbar-item">
                 <div>
                   <span class="icon is-small">
-                    <i class="fa fa-bug"></i>
-                  </span>
-                  Report Bug
-                </div>
-              </a>
-              <a class="navbar-item">
-                <div>
-                  <span class="icon is-small">
                     <i class="fa fa-sign-out"></i>
                   </span>
                   Sign Out
@@ -47,12 +40,15 @@
         </div>
       </div>
     </nav>
-    <div class="section" style="background-color: #edf3f2">
+    </nav>
+    <div class="section">
       <div class="field has-text-centered">
         <div class="label">
           <div class="is-size-3 is-capitalized">registration form</div>
         </div>
       </div>
+      <hr />
+      
       <div class="section">
         <div class="columns is-centered">
           <div class="column is-4">
@@ -206,9 +202,10 @@
             </div>
           </div>
         </div>
+        </div>
       </div>
-    </div>
-  </div>
+      </div>
+    
 </template>
 
 <script>
@@ -255,4 +252,19 @@ export default {
 .select select:not([multiple]) {
   width: 500px;
 }
+h1:last-child,
+h2:last-child,
+h3:last-child,
+h4:last-child,
+h5:last-child,
+p:last-child {
+  margin-left: 432px;
+}
+
+
+
+hr {
+  background-color: #3dcabe;
+}
+
 </style>

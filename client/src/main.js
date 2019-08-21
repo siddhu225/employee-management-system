@@ -9,6 +9,12 @@ import "buefy/dist/buefy.css";
 
 Vue.use(Buefy);
 
+// import VueNotification from "@kugatsu/vuenotification";
+
+// Vue.use(VueNotification, {
+//   timer: 20
+// });
+
 Vue.config.productionTip = false;
 
 /* eslint-disable no-new */

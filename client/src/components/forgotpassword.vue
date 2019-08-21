@@ -3,11 +3,11 @@
     <div class="hero-body">
       <div class="container">
         <div class="columns is-centered">
-          <div class="column is-5-tablet is-4-desktop is-5-widescreen">
+          <div class="column is-5-tablet is-4-desktop is-6-widescreen">
             <div class="box">
               <div class="field has-text-centered">
                 <div class="label">
-                  <div class="is-size-3 is-capitalized">LOGIN FORM</div>
+                  <div class="is-size-3 is-capitalized">FORGOT PASSWORD FORM</div>
                   <hr />
                 </div>
               </div>
@@ -27,13 +27,13 @@
                 </div>
               </div>
               <div class="field">
-                <label for class="label has-text-left">Password</label>
+                <label for class="label has-text-left"> New Password</label>
                 <div class="control has-icons-left">
                   <input
                     type="password"
                     placeholder="*******"
                     class="input"
-                    v-model="password"
+                    v-model="password1"
                     required
                   />
                   <span class="icon is-small is-left has-text-grey-dark">
@@ -42,10 +42,23 @@
                 </div>
               </div>
               <div class="field">
-                <router-link class="has-text-right" v-bind:to="{ name: 'ForgotPassword' }" style="color:blue">Forgot Password?</router-link>
+                <label for class="label has-text-left">Confirm Password</label>
+                <div class="control has-icons-left">
+                  <input
+                    type="password"
+                    placeholder="*******"
+                    class="input"
+                    v-model="password2"
+                    required
+                  />
+                  <span class="icon is-small is-left has-text-grey-dark">
+                    <i class="fa fa-lock"></i>
+                  </span>
+                </div>
               </div>
+              <br><br>
               <div class="field">
-                <button class="button is-success" @click="onLogin">Login</button>
+                <button class="button is-success" @click="onLogin">Submit</button>
               </div>
             </div>
           </div>
@@ -59,34 +72,38 @@
 import PostsService from "@/services/PostsService";
 
 export default {
-  name: "app",
+  name: "ForgotPassword",
   data() {
     return {
       email: "",
-      password: ""
+      password1:"",
+      password2:""
     };
   },
   components: {},
   mounted() {},
   methods: {
-    async onLogin() {
+
+     async onLogin() {
       console.log("helloo siddhu");
 
-      let res = await PostsService.postUser({
+      if(this.password1 ===  this.password2){
+        let res = await PostsService.postUser1({
         email: this.email,
-        password: this.password
+        password: this.password1,
+
       });
-      if (res.data == "admin") {
-        this.$router.push({ name: "Employees" });
-        // this.$notification.new("hello world", {  timer: 10 });
-      } else if (res.data == "not_user") {
-        this.$router.push({ name: "login" });
-        alert("Please register first")
-      } else {
-        console.log(res);
-        this.$router.push({ name: "EmployeeProfile", params:{'userId': res.data} });
+
       }
+      else{
+        alert("password and confrim password is not matching")
+      }
+
+      this.$router.push({ name: "login" });
+  
     }
+
+    
   }
 };
 </script>
